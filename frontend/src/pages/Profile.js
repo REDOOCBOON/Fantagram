@@ -9,38 +9,24 @@ function Profile() {
   );
 
   useEffect(() => {
-  const fetchPosts = async () => {
-    try {
-      const res = await API.get("/posts");
+    const fetchPosts = async () => {
+      try {
+        const res = await API.get("/posts");
 
-      const myPosts = res.data.posts.filter(
-        (post) => post.user === user?._id
-      );
+        const myPosts =
+          res.data.posts.filter(
+            (post) =>
+              post.user === user?._id
+          );
 
-      setPosts(myPosts);
-    } catch (err) {
-      console.log(err);
-    }
-  };
+        setPosts(myPosts);
+      } catch (err) {
+        console.log(err);
+      }
+    };
 
-  fetchPosts();
-}, [user]);
-
-  const fetchPosts = async () => {
-    try {
-      const res = await API.get("/posts");
-
-      const myPosts =
-        res.data.posts.filter(
-          (post) =>
-            post.user === user?._id
-        );
-
-      setPosts(myPosts);
-    } catch (err) {
-      console.log(err);
-    }
-  };
+    fetchPosts();
+  }, [user]);
 
   const totalLikes = posts.reduce(
     (sum, post) =>
@@ -48,12 +34,11 @@ function Profile() {
     0
   );
 
-  const totalComments =
-    posts.reduce(
-      (sum, post) =>
-        sum + post.comments.length,
-      0
-    );
+  const totalComments = posts.reduce(
+    (sum, post) =>
+      sum + post.comments.length,
+    0
+  );
 
   return (
     <div
@@ -87,8 +72,7 @@ function Profile() {
         <div
           style={{
             display: "flex",
-            justifyContent:
-              "center",
+            justifyContent: "center",
             gap: "30px",
             marginTop: "20px",
           }}
@@ -113,8 +97,7 @@ function Profile() {
         <div
           key={post._id}
           style={{
-            border:
-              "1px solid #ddd",
+            border: "1px solid #ddd",
             borderRadius: "15px",
             padding: "15px",
             marginBottom: "15px",
@@ -126,8 +109,7 @@ function Profile() {
               alt=""
               width="100%"
               style={{
-                borderRadius:
-                  "10px",
+                borderRadius: "10px",
               }}
             />
           )}
@@ -135,16 +117,11 @@ function Profile() {
           <p>{post.text}</p>
 
           <p>
-            ❤️ {
-              post.likes.length
-            } Likes
+            ❤️ {post.likes.length} Likes
           </p>
 
           <p>
-            💬 {
-              post.comments
-                .length
-            } Comments
+            💬 {post.comments.length} Comments
           </p>
 
           <small>
