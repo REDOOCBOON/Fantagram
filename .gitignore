@@ -31,6 +31,13 @@ Thumbs.db
 .env.test.local
 .env.production.local
 
+# Builds
+build/
+dist/
+
+# macOS
+.DS_Store
+
 # Optional: Uploaded Images
 # Uncomment if you don't want uploaded files on GitHub
 # backend/uploads/
