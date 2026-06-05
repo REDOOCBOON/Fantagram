@@ -1,6 +1,12 @@
 import { useEffect, useState } from "react";
 import API from "../services/api";
 
+const BACKEND_URL =
+  process.env.REACT_APP_API_URL?.replace(
+    "/api",
+    ""
+  );
+
 function Profile() {
   const [posts, setPosts] = useState([]);
 
@@ -105,7 +111,7 @@ function Profile() {
         >
           {post.image && (
             <img
-              src={`http://localhost:8000${post.image}`}
+              src={`${BACKEND_URL}${post.image}`}
               alt=""
               width="100%"
               style={{

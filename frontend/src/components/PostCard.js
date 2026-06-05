@@ -14,6 +14,12 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import ChatBubbleIcon from "@mui/icons-material/ChatBubble";
 import DeleteIcon from "@mui/icons-material/Delete";
 
+const BACKEND_URL =
+  process.env.REACT_APP_API_URL?.replace(
+    "/api",
+    ""
+  );
+
 function PostCard({
   post,
   onLike,
@@ -36,8 +42,7 @@ function PostCard({
         sx={{
           display: "flex",
           alignItems: "center",
-          justifyContent:
-            "space-between",
+          justifyContent: "space-between",
           p: 2,
         }}
       >
@@ -92,7 +97,7 @@ function PostCard({
       {post.image && (
         <CardMedia
           component="img"
-          image={`http://localhost:8000${post.image}`}
+          image={`${BACKEND_URL}${post.image}`}
           alt="post"
           sx={{
             maxHeight: 500,
