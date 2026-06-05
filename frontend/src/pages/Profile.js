@@ -9,8 +9,22 @@ function Profile() {
   );
 
   useEffect(() => {
-    fetchPosts();
-  }, []);
+  const fetchPosts = async () => {
+    try {
+      const res = await API.get("/posts");
+
+      const myPosts = res.data.posts.filter(
+        (post) => post.user === user?._id
+      );
+
+      setPosts(myPosts);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  fetchPosts();
+}, [user]);
 
   const fetchPosts = async () => {
     try {
