@@ -16,6 +16,7 @@ app.use(
   cors({
     origin: [
       "http://localhost:3000",
+      "https://fantagram-01.vercel.app",
     ],
     credentials: true,
   })
